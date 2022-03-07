@@ -58,9 +58,9 @@ public:
 std::ostream& operator<<(std::ostream& out, const Vector3& vector);
 Vector3 operator+(const Vector3& one, const Vector3& theOther);
 Vector3 operator-(const Vector3& one, const Vector3& theOther);
-Vector3 operator*(const Vector3& one, const Vector3& theOther);
 Vector3 operator*(const Vector3& vector, double times);
 Vector3 operator*(double times, const Vector3& vector);
+Vector3 operator*(const Vector3& one, const Vector3& theOther);
 Vector3 operator/(const Vector3& vector, double times);
 
 #endif //RAYTRACINGINONEWEEKEND_VECTOR3_H

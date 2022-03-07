@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.21"
@@ -41,14 +41,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "GradientPPMGenerator::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-GradientPPMGenerator-Debug-bce7b0450eeaa635b360.json",
+					"jsonFile" : "target-GradientPPMGenerator-Debug-747e196745f84b352005.json",
 					"name" : "GradientPPMGenerator",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "RayTracer::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-RayTracer-Debug-56e9a812533e96fff5fb.json",
+					"jsonFile" : "target-RayTracer-Debug-65d45c7fd0cae31b4cc7.json",
 					"name" : "RayTracer",
 					"projectIndex" : 0
 				}
@@ -58,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/cmake-build-debug",
-		"source" : "/home/bunny/CLionProjects/PracticeRayTracingInOneWeekend"
+		"build" : "C:/Users/Rabbit/Documents/CLion Projects/PracticeRayTracingInOneWeekend/cmake-build-debug",
+		"source" : "C:/Users/Rabbit/Documents/CLion Projects/PracticeRayTracingInOneWeekend"
 	},
 	"version" : 
 	{

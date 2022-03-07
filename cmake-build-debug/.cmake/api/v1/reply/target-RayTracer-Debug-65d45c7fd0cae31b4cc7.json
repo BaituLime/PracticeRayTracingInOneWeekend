@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "RayTracer"
+			"path" : "RayTracer.exe"
+		},
+		{
+			"path" : "RayTracer.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -72,12 +75,16 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "RayTracer",
-	"nameOnDisk" : "RayTracer",
+	"nameOnDisk" : "RayTracer.exe",
 	"paths" : 
 	{
 		"build" : ".",

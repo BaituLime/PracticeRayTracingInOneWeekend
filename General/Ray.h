@@ -5,6 +5,7 @@
 #ifndef RAYTRACINGINONEWEEKEND_RAY_H
 #define RAYTRACINGINONEWEEKEND_RAY_H
 
+#include <cmath>
 #include "Vector3.h"
 #include "Color.h"
 #include "Sphere.h"
@@ -33,9 +34,7 @@ public:
 
 	Color GetColor();
 
-	bool CanHitSphere(Sphere& sphere);
-private:
-	double CalculateHitSphereDiscriminant(Sphere& sphere);
+	double HitSpherePoint(Sphere& sphere);
 };
 
 
