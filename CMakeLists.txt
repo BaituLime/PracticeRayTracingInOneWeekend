@@ -9,4 +9,4 @@ add_executable(RayTracer
         General/Vector3.cpp
         General/Ray.cpp
         RayTracer/Main.cpp
-        General/Color.cpp)
+        General/Color.cpp General/Sphere.cpp General/Sphere.h)

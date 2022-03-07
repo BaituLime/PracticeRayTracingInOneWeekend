@@ -42,6 +42,7 @@ public:
 	double& operator[](size_t index);
 
 	Vector3 operator-() const;
+	Vector3& operator=(const Vector3& theOther);
 	Vector3& operator+=(const Vector3& theOther);
 	Vector3& operator*=(double times);
 	Vector3& operator/=(double times);

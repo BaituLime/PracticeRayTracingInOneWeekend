@@ -7,6 +7,7 @@
 
 #include "Vector3.h"
 #include "Color.h"
+#include "Sphere.h"
 
 // P(t)=A+tb
 class Ray
@@ -28,10 +29,13 @@ public:
 
 	Vector3 GetOrigin() const;
 	Vector3 GetDirection() const;
-
 	Vector3 At(double t) const;
 
-	Color GetColor() const;
+	Color GetColor();
+
+	bool CanHitSphere(Sphere& sphere);
+private:
+	double CalculateHitSphereDiscriminant(Sphere& sphere);
 };
 
 

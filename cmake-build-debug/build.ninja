@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/bunny/CLionProjects/RayTracingInOneWeekend/cmake-build-debug/
+cmake_ninja_workdir = /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/bunny/CLionProjects/RayTracingInOneWeekend/cmake-build-debug && /opt/clion/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/bunny/CLionProjects/RayTracingInOneWeekend -B/home/bunny/CLionProjects/RayTracingInOneWeekend/cmake-build-debug
+  COMMAND = cd /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/cmake-build-debug && /opt/clion/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/bunny/CLionProjects/PracticeRayTracingInOneWeekend -B/home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -61,26 +61,32 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build cmake_object_order_depends_target_RayTracer: phony || CMakeFiles/RayTracer.dir
 
-build CMakeFiles/RayTracer.dir/General/Vector3.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/RayTracingInOneWeekend/General/Vector3.cpp || cmake_object_order_depends_target_RayTracer
+build CMakeFiles/RayTracer.dir/General/Vector3.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/General/Vector3.cpp || cmake_object_order_depends_target_RayTracer
   DEP_FILE = CMakeFiles/RayTracer.dir/General/Vector3.cpp.o.d
   FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/RayTracer.dir
   OBJECT_FILE_DIR = CMakeFiles/RayTracer.dir/General
 
-build CMakeFiles/RayTracer.dir/General/Ray.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/RayTracingInOneWeekend/General/Ray.cpp || cmake_object_order_depends_target_RayTracer
+build CMakeFiles/RayTracer.dir/General/Ray.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/General/Ray.cpp || cmake_object_order_depends_target_RayTracer
   DEP_FILE = CMakeFiles/RayTracer.dir/General/Ray.cpp.o.d
   FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/RayTracer.dir
   OBJECT_FILE_DIR = CMakeFiles/RayTracer.dir/General
 
-build CMakeFiles/RayTracer.dir/RayTracer/Main.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/RayTracingInOneWeekend/RayTracer/Main.cpp || cmake_object_order_depends_target_RayTracer
+build CMakeFiles/RayTracer.dir/RayTracer/Main.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/RayTracer/Main.cpp || cmake_object_order_depends_target_RayTracer
   DEP_FILE = CMakeFiles/RayTracer.dir/RayTracer/Main.cpp.o.d
   FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/RayTracer.dir
   OBJECT_FILE_DIR = CMakeFiles/RayTracer.dir/RayTracer
 
-build CMakeFiles/RayTracer.dir/General/Color.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/RayTracingInOneWeekend/General/Color.cpp || cmake_object_order_depends_target_RayTracer
+build CMakeFiles/RayTracer.dir/General/Color.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/General/Color.cpp || cmake_object_order_depends_target_RayTracer
   DEP_FILE = CMakeFiles/RayTracer.dir/General/Color.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  OBJECT_DIR = CMakeFiles/RayTracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/RayTracer.dir/General
+
+build CMakeFiles/RayTracer.dir/General/Sphere.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/General/Sphere.cpp || cmake_object_order_depends_target_RayTracer
+  DEP_FILE = CMakeFiles/RayTracer.dir/General/Sphere.cpp.o.d
   FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/RayTracer.dir
   OBJECT_FILE_DIR = CMakeFiles/RayTracer.dir/General
@@ -93,7 +99,7 @@ build CMakeFiles/RayTracer.dir/General/Color.cpp.o: CXX_COMPILER__RayTracer_Debu
 #############################################
 # Link the executable RayTracer
 
-build RayTracer: CXX_EXECUTABLE_LINKER__RayTracer_Debug CMakeFiles/RayTracer.dir/General/Vector3.cpp.o CMakeFiles/RayTracer.dir/General/Ray.cpp.o CMakeFiles/RayTracer.dir/RayTracer/Main.cpp.o CMakeFiles/RayTracer.dir/General/Color.cpp.o
+build RayTracer: CXX_EXECUTABLE_LINKER__RayTracer_Debug CMakeFiles/RayTracer.dir/General/Vector3.cpp.o CMakeFiles/RayTracer.dir/General/Ray.cpp.o CMakeFiles/RayTracer.dir/RayTracer/Main.cpp.o CMakeFiles/RayTracer.dir/General/Color.cpp.o CMakeFiles/RayTracer.dir/General/Sphere.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/RayTracer.dir
   POST_BUILD = :
@@ -106,7 +112,7 @@ build RayTracer: CXX_EXECUTABLE_LINKER__RayTracer_Debug CMakeFiles/RayTracer.dir
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/bunny/CLionProjects/RayTracingInOneWeekend/cmake-build-debug && /opt/clion/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/cmake-build-debug && /opt/clion/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -121,7 +127,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_GradientPPMGenerator: phony || CMakeFiles/GradientPPMGenerator.dir
 
-build CMakeFiles/GradientPPMGenerator.dir/GradientPPMGenerator/main.cpp.o: CXX_COMPILER__GradientPPMGenerator_Debug /home/bunny/CLionProjects/RayTracingInOneWeekend/GradientPPMGenerator/main.cpp || cmake_object_order_depends_target_GradientPPMGenerator
+build CMakeFiles/GradientPPMGenerator.dir/GradientPPMGenerator/main.cpp.o: CXX_COMPILER__GradientPPMGenerator_Debug /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/GradientPPMGenerator/main.cpp || cmake_object_order_depends_target_GradientPPMGenerator
   DEP_FILE = CMakeFiles/GradientPPMGenerator.dir/GradientPPMGenerator/main.cpp.o.d
   FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/GradientPPMGenerator.dir
@@ -152,7 +158,7 @@ build GradientPPMGenerator: CXX_EXECUTABLE_LINKER__GradientPPMGenerator_Debug CM
 # =============================================================================
 
 #############################################
-# Folder: /home/bunny/CLionProjects/RayTracingInOneWeekend/cmake-build-debug
+# Folder: /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/cmake-build-debug
 
 build all: phony RayTracer GradientPPMGenerator
 

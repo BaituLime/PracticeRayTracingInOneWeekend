@@ -29,6 +29,14 @@ Vector3 Vector3::operator-() const
 	return { -Elements[0], -Elements[1], -Elements[2] };
 }
 
+Vector3& Vector3::operator=(const Vector3& theOther)
+{
+	Elements[0] = theOther.Elements[0];
+	Elements[1] = theOther.Elements[1];
+	Elements[2] = theOther.Elements[2];
+	return *this;
+}
+
 Vector3& Vector3::operator+=(const Vector3& theOther)
 {
 	Elements[0] += theOther.Elements[0];
