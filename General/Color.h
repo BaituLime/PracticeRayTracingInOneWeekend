@@ -16,7 +16,7 @@ public:
 	Color();
 	explicit Color(double element);
 	explicit Color(double elements[3]);
-	explicit Color(Vector3& data);
+	explicit Color(Vector3 data);
 	Color(Color& other);
 	Color(double x, double y, double z);
 	~Color();

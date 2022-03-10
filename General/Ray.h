@@ -7,8 +7,6 @@
 
 #include <cmath>
 #include "Vector3.h"
-#include "Color.h"
-#include "Sphere.h"
 
 // P(t)=A+tb
 class Ray
@@ -32,9 +30,7 @@ public:
 	Vector3 GetDirection() const;
 	Vector3 At(double t) const;
 
-	Color GetColor();
-
-	double HitSpherePoint(Sphere& sphere);
+	class Color GetColor(class Hitable& world, int depth);
 };
 
 

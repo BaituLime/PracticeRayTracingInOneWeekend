@@ -3,6 +3,7 @@
 //
 
 #include "Color.h"
+#include "CommonHeader.hpp"
 
 Color::Color()
 {
@@ -19,7 +20,7 @@ Color::Color(double* elements)
 	Data = new Vector3(elements[3]);
 }
 
-Color::Color(Vector3& data)
+Color::Color(Vector3 data)
 {
 	Data = new Vector3(data);
 }
@@ -46,6 +47,7 @@ Vector3& Color::GetData()
 
 std::ostream& operator<<(std::ostream& out, const Color& color)
 {
-	return out << int(256 * (*color.Data)[0]) << ' ' << int(256 * (*color.Data)[1]) << ' '
-			   << int(256 * (*color.Data)[2]);
+	return out << int(256 * RabbitUtility::Clamp((*color.Data)[0], 0.0, 0.999)) << ' '
+			   << int(256 * RabbitUtility::Clamp((*color.Data)[1], 0.0, 0.999)) << ' '
+			   << int(256 * RabbitUtility::Clamp((*color.Data)[2], 0.0, 0.999));
 }

@@ -52,6 +52,12 @@ public:
 
 	Vector3& Normalize();
 	Vector3 Normalized() const;
+
+	void Pow(double times);
+
+public:
+	static Vector3 Random(double min = 0.0, double max = 1.0);
+	static Vector3 RandomPointInUnitSphere();
 };
 
 

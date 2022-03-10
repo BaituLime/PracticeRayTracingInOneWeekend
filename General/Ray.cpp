@@ -3,6 +3,8 @@
 //
 
 #include "Ray.h"
+#include "Color.h"
+#include "Hitable.hpp"
 
 Vector3 Ray::GetOrigin() const
 {
@@ -19,40 +21,25 @@ Vector3 Ray::At(double t) const
 	return Origin + t * Direction;
 }
 
-Color Ray::GetColor()
+Color Ray::GetColor(Hitable& world, int depth)
 {
-	// Normal Visualization.
-	Sphere s({ 0, 0, -1 }, 0.5);
-	double t = HitSpherePoint(s);
-	if (t > 0.0)
+	if (depth <= 0)
+		return {};
+
+	HitRecord hitRecord;
+	if (world.IsHit(*this, 0, Infinity, hitRecord))
+		//	return Color(0.5 * (hitRecord.Normal + Vector3{ 1, 1, 1 }));
 	{
-		Vector3 normal = (At(t) - Vector3{ 0, 0, -1 }).Normalized();
-		normal[0]++;
-		normal[1]++;
-		normal[2]++;
-		normal *= .5;
-		return Color(normal);
+		Vector3 target = hitRecord.IntersectionPoint + hitRecord.Normal + Vector3::RandomPointInUnitSphere();
+		Ray fromIntersectionToTarget(hitRecord.IntersectionPoint, target - hitRecord.IntersectionPoint);
+		Color theColor = fromIntersectionToTarget.GetColor(world, depth - 1);
+		//theColor.GetData().Pow(1.0 / 2.2);    // Gamma correction.
+		theColor.GetData() *= .5;
+		return theColor;
 	}
 
 	// Gradient Background.
 	Vector3 unitDirection = Direction.Normalized();
-	t = .5 * (unitDirection[1] + 1.0);
-	Vector3 result = (1 - t) * Vector3(1.0) + t * Vector3(.5, .7, 1.0);
-	return Color(result);
-}
-
-double Ray::HitSpherePoint(Sphere& sphere)
-{
-	// Calculate discriminant.
-	Vector3 aSubC = Origin - sphere.Center;
-	double a = Direction.Dot(Direction);
-	double b = 2.0 * Direction.Dot(aSubC);
-	double c = aSubC.Dot(aSubC) - sphere.Radius * sphere.Radius;
-	double discriminant = b * b - 4 * a * c;
-
-	// Give back the "t".
-	if (discriminant < 0)
-		return -1.0;
-	else
-		return (-b - std::sqrt(discriminant)) / (2.0 * a);
+	double t = .5 * (unitDirection[1] + 1.0);
+	return Color((1 - t) * Vector3(1.0) + t * Vector3(.5, .7, 1.0));
 }

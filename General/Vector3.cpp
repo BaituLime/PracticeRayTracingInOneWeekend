@@ -3,6 +3,7 @@
 //
 
 #include "Vector3.h"
+#include "CommonHeader.hpp"
 
 double Vector3::Length() const
 {
@@ -83,6 +84,29 @@ Vector3& Vector3::Normalize()
 Vector3 Vector3::Normalized() const
 {
 	return *this / Length();
+}
+
+Vector3 Vector3::Random(double min, double max)
+{
+	return Vector3(RabbitUtility::Random(min, max));
+}
+
+Vector3 Vector3::RandomPointInUnitSphere()
+{
+	while (true)
+	{
+		Vector3 point = Vector3::Random(-1, 1);
+		if (point.LengthSquared() >= 1)
+			continue;
+		return point;
+	}
+}
+
+void Vector3::Pow(double times)
+{
+	Elements[0] = std::pow(Elements[0], times);
+	Elements[1] = std::pow(Elements[1], times);
+	Elements[2] = std::pow(Elements[2], times);
 }
 
 std::ostream& operator<<(std::ostream& out, const Vector3& vector)

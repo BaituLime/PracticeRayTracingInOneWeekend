@@ -5,20 +5,25 @@
 #ifndef RAYTRACINGINONEWEEKEND_SPHERE_H
 #define RAYTRACINGINONEWEEKEND_SPHERE_H
 
-#include "Vector3.h"
+#include "Hitable.hpp"
 
-class Sphere
+class Sphere : public Hitable
 {
 private:
 	Vector3 Center;
 	double Radius = 0;
 public:
 	Sphere() = default;
+
+	explicit Sphere(const double x, const double y, const double z, const double radius) : Center{ x, y, z }, Radius(radius)
+	{
+	}
+
 	explicit Sphere(const Vector3 center, double radius = 0) : Center(center), Radius(radius)
 	{
 	}
 
-	friend class Ray;
+	virtual bool IsHit(const Ray& ray, double tMin, double tMax, HitRecord& record) const override;
 };
 
 
