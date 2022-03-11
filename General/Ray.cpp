@@ -27,13 +27,11 @@ Color Ray::GetColor(Hitable& world, int depth)
 		return {};
 
 	HitRecord hitRecord;
-	if (world.IsHit(*this, 0, Infinity, hitRecord))
-		//	return Color(0.5 * (hitRecord.Normal + Vector3{ 1, 1, 1 }));
+	if (world.IsHit(*this, 0.001, Infinity, hitRecord))
 	{
-		Vector3 target = hitRecord.IntersectionPoint + hitRecord.Normal + Vector3::RandomPointInUnitSphere();
+		Vector3 target = hitRecord.IntersectionPoint + hitRecord.Normal + Vector3::RandomPointInUnitSphere().Normalized();
 		Ray fromIntersectionToTarget(hitRecord.IntersectionPoint, target - hitRecord.IntersectionPoint);
 		Color theColor = fromIntersectionToTarget.GetColor(world, depth - 1);
-		//theColor.GetData().Pow(1.0 / 2.2);    // Gamma correction.
 		theColor.GetData() *= .5;
 		return theColor;
 	}

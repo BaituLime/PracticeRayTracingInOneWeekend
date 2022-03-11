@@ -4,7 +4,7 @@
 
 #include "Camera.h"
 
-Camera::Camera(Vector3 origin, double aspectRatio, double viewportHeight, double focalLength)
+Camera::Camera(const Vector3& origin, double aspectRatio, double viewportHeight, double focalLength)
 {
 	Origin = origin;
 	HorizontalUnit = { viewportHeight * aspectRatio, 0, 0 };

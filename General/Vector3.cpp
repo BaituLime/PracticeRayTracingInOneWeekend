@@ -88,7 +88,7 @@ Vector3 Vector3::Normalized() const
 
 Vector3 Vector3::Random(double min, double max)
 {
-	return Vector3(RabbitUtility::Random(min, max));
+	return { RabbitUtility::Random(min, max), RabbitUtility::Random(min, max), RabbitUtility::Random(min, max) };
 }
 
 Vector3 Vector3::RandomPointInUnitSphere()

@@ -47,7 +47,10 @@ Vector3& Color::GetData()
 
 std::ostream& operator<<(std::ostream& out, const Color& color)
 {
-	return out << int(256 * RabbitUtility::Clamp((*color.Data)[0], 0.0, 0.999)) << ' '
-			   << int(256 * RabbitUtility::Clamp((*color.Data)[1], 0.0, 0.999)) << ' '
-			   << int(256 * RabbitUtility::Clamp((*color.Data)[2], 0.0, 0.999));
+	// Gamma Correction.
+	color.Data->Pow(1.0 / 1.8);
+
+	return out << int(256.0 * RabbitUtility::Clamp((*color.Data)[0], 0.0, 0.999)) << ' '
+			   << int(256.0 * RabbitUtility::Clamp((*color.Data)[1], 0.0, 0.999)) << ' '
+			   << int(256.0 * RabbitUtility::Clamp((*color.Data)[2], 0.0, 0.999));
 }

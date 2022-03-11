@@ -21,7 +21,8 @@ int main()
 	world.Append(std::make_shared<Sphere>(0, -100.5, -1, 100));
 
 	// Create the camera.
-	Camera mainCamera((Vector3()));
+	Vector3 Origin(0.0);
+	Camera mainCamera(Origin);
 
 	// Render.
 	std::cout << "P3\n" << imageWidth << " " << imageHeight << "\n255\n";
@@ -33,8 +34,8 @@ int main()
 			Color pixelColor;
 			for (int s = 0; s < samplesPerPixel; s++)
 			{
-				auto u = (i + RabbitUtility::Random()) / (imageWidth - 1);
-				auto v = (j + RabbitUtility::Random()) / (imageHeight - 1);
+				auto u = (i + RabbitUtility::Random(-1,1)) / (imageWidth - 1);
+				auto v = (j + RabbitUtility::Random(-1,1)) / (imageHeight - 1);
 				Ray ray = mainCamera.GetRayByCoordinate(u, v);
 				pixelColor.GetData() += ray.GetColor(world, maxReflectionTimes).GetData();
 			}
