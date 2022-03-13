@@ -103,6 +103,18 @@ build CMakeFiles/RayTracer.dir/General/Camera.cpp.o: CXX_COMPILER__RayTracer_Deb
   OBJECT_DIR = CMakeFiles/RayTracer.dir
   OBJECT_FILE_DIR = CMakeFiles/RayTracer.dir/General
 
+build CMakeFiles/RayTracer.dir/General/LambertianMaterial.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/General/LambertianMaterial.cpp || cmake_object_order_depends_target_RayTracer
+  DEP_FILE = CMakeFiles/RayTracer.dir/General/LambertianMaterial.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  OBJECT_DIR = CMakeFiles/RayTracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/RayTracer.dir/General
+
+build CMakeFiles/RayTracer.dir/General/MetalMaterial.cpp.o: CXX_COMPILER__RayTracer_Debug /home/bunny/CLionProjects/PracticeRayTracingInOneWeekend/General/MetalMaterial.cpp || cmake_object_order_depends_target_RayTracer
+  DEP_FILE = CMakeFiles/RayTracer.dir/General/MetalMaterial.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  OBJECT_DIR = CMakeFiles/RayTracer.dir
+  OBJECT_FILE_DIR = CMakeFiles/RayTracer.dir/General
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target RayTracer
@@ -111,7 +123,7 @@ build CMakeFiles/RayTracer.dir/General/Camera.cpp.o: CXX_COMPILER__RayTracer_Deb
 #############################################
 # Link the executable RayTracer
 
-build RayTracer: CXX_EXECUTABLE_LINKER__RayTracer_Debug CMakeFiles/RayTracer.dir/General/Vector3.cpp.o CMakeFiles/RayTracer.dir/General/Ray.cpp.o CMakeFiles/RayTracer.dir/RayTracer/Main.cpp.o CMakeFiles/RayTracer.dir/General/Color.cpp.o CMakeFiles/RayTracer.dir/General/Sphere.cpp.o CMakeFiles/RayTracer.dir/General/HitableList.cpp.o CMakeFiles/RayTracer.dir/General/Camera.cpp.o
+build RayTracer: CXX_EXECUTABLE_LINKER__RayTracer_Debug CMakeFiles/RayTracer.dir/General/Vector3.cpp.o CMakeFiles/RayTracer.dir/General/Ray.cpp.o CMakeFiles/RayTracer.dir/RayTracer/Main.cpp.o CMakeFiles/RayTracer.dir/General/Color.cpp.o CMakeFiles/RayTracer.dir/General/Sphere.cpp.o CMakeFiles/RayTracer.dir/General/HitableList.cpp.o CMakeFiles/RayTracer.dir/General/Camera.cpp.o CMakeFiles/RayTracer.dir/General/LambertianMaterial.cpp.o CMakeFiles/RayTracer.dir/General/MetalMaterial.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/RayTracer.dir
   POST_BUILD = :

@@ -17,11 +17,13 @@ public:
 	explicit Color(double element);
 	explicit Color(double elements[3]);
 	explicit Color(Vector3 data);
-	Color(Color& other);
+	Color(const Color& other);
 	Color(double x, double y, double z);
 	~Color();
 
 	Vector3& GetData();
+
+	Color& operator=(const Color& other);
 
 	friend std::ostream& operator<<(std::ostream& out, const Color& color);
 };

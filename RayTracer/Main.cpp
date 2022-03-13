@@ -5,6 +5,8 @@
 #include "../General/HitableList.h"
 #include "../General/Sphere.h"
 #include "../General/Camera.h"
+#include "../General/LambertianMaterial.h"
+#include "../General/MetalMaterial.h"
 
 int main()
 {
@@ -17,8 +19,14 @@ int main()
 
 	// Build the World.
 	HitableList world;
-	world.Append(std::make_shared<Sphere>(0, 0, -1, 0.5));
-	world.Append(std::make_shared<Sphere>(0, -100.5, -1, 100));
+	auto materialGround = std::make_shared<LambertianMaterial>(Color(0.8, 0.8, 0.0));
+	auto materialCenter = std::make_shared<LambertianMaterial>(Color(0.7, 0.3, 0.3));
+	auto materialLeft = std::make_shared<MetalMaterial>(Color(0.8));
+	auto materialRight = std::make_shared<MetalMaterial>(Color(0.8, 0.6, 0.2));
+	world.Append(std::make_shared<Sphere>(Vector3(0.0, -100.5, -1.0), materialGround, 100.0));
+	world.Append(std::make_shared<Sphere>(Vector3{ 0.0, 0.0, -1.0 }, materialCenter, 0.5));
+	world.Append(std::make_shared<Sphere>(Vector3{ -1.0, 0.0, -1.0 }, materialLeft, 0.5));
+	world.Append(std::make_shared<Sphere>(Vector3{ 1.0, 0.0, -1.0 }, materialRight, 0.5));
 
 	// Create the camera.
 	Vector3 Origin(0.0);
@@ -34,8 +42,8 @@ int main()
 			Color pixelColor;
 			for (int s = 0; s < samplesPerPixel; s++)
 			{
-				auto u = (i + RabbitUtility::Random(-1,1)) / (imageWidth - 1);
-				auto v = (j + RabbitUtility::Random(-1,1)) / (imageHeight - 1);
+				auto u = (i + RabbitUtility::Random(-1, 1)) / (imageWidth - 1);
+				auto v = (j + RabbitUtility::Random(-1, 1)) / (imageHeight - 1);
 				Ray ray = mainCamera.GetRayByCoordinate(u, v);
 				pixelColor.GetData() += ray.GetColor(world, maxReflectionTimes).GetData();
 			}

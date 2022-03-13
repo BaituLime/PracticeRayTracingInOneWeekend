@@ -25,7 +25,7 @@ Color::Color(Vector3 data)
 	Data = new Vector3(data);
 }
 
-Color::Color(Color& other)
+Color::Color(const Color& other)
 {
 	Data = new Vector3(*other.Data);
 }
@@ -53,4 +53,17 @@ std::ostream& operator<<(std::ostream& out, const Color& color)
 	return out << int(256.0 * RabbitUtility::Clamp((*color.Data)[0], 0.0, 0.999)) << ' '
 			   << int(256.0 * RabbitUtility::Clamp((*color.Data)[1], 0.0, 0.999)) << ' '
 			   << int(256.0 * RabbitUtility::Clamp((*color.Data)[2], 0.0, 0.999));
+}
+
+Color& Color::operator=(const Color& other)
+{
+	if (!Data)
+	{
+		Data = new Vector3(*other.Data);
+		return *this;
+	}
+	Data[0] = other.Data[0];
+	Data[1] = other.Data[1];
+	Data[2] = other.Data[2];
+	return *this;
 }

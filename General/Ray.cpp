@@ -2,9 +2,10 @@
 // Created by bunny on 3/4/22.
 //
 
-#include "Ray.h"
+#include "CommonHeader.hpp"
 #include "Color.h"
 #include "Hitable.hpp"
+#include "Material.hpp"
 
 Vector3 Ray::GetOrigin() const
 {
@@ -29,11 +30,15 @@ Color Ray::GetColor(Hitable& world, int depth)
 	HitRecord hitRecord;
 	if (world.IsHit(*this, 0.001, Infinity, hitRecord))
 	{
-		Vector3 target = hitRecord.IntersectionPoint + hitRecord.Normal + Vector3::RandomPointInUnitSphere().Normalized();
-		Ray fromIntersectionToTarget(hitRecord.IntersectionPoint, target - hitRecord.IntersectionPoint);
-		Color theColor = fromIntersectionToTarget.GetColor(world, depth - 1);
-		theColor.GetData() *= .5;
-		return theColor;
+		Ray scatteredResult;
+		Color attenuation;
+		if (hitRecord.TheMaterial->Scatter(*this, hitRecord, attenuation, scatteredResult))
+		{
+			Color result(scatteredResult.GetColor(world, depth - 1));
+			result.GetData() *= attenuation.GetData();
+			return result;
+		}
+		return {};
 	}
 
 	// Gradient Background.

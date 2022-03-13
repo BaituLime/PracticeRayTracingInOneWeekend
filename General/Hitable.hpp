@@ -8,11 +8,14 @@
 #include "CommonHeader.hpp"
 #include "Color.h"
 
+class Material;
+
 struct HitRecord
 {
 public:
 	double T;
 	Vector3 IntersectionPoint;
+	std::shared_ptr<Material> TheMaterial;
 	Vector3 Normal;
 
 public:
@@ -22,6 +25,7 @@ public:
 	}
 };
 
+// This is an abstract class.
 class Hitable
 {
 public:

@@ -46,6 +46,14 @@ Vector3& Vector3::operator+=(const Vector3& theOther)
 	return *this;
 }
 
+Vector3& Vector3::operator*=(const Vector3& theOther)
+{
+	Elements[0] *= theOther.Elements[0];
+	Elements[1] *= theOther.Elements[1];
+	Elements[2] *= theOther.Elements[2];
+	return *this;
+}
+
 Vector3& Vector3::operator*=(const double times)
 {
 	Elements[0] *= times;
@@ -102,11 +110,35 @@ Vector3 Vector3::RandomPointInUnitSphere()
 	}
 }
 
+Vector3 Vector3::RandomPointOnUnitSphere()
+{
+	return RandomPointInUnitSphere().Normalized();
+}
+
+Vector3 Vector3::RandomPointInHemisphere(const Vector3& normal)
+{
+	Vector3 temp = RandomPointInUnitSphere();
+	if (temp.Dot(normal) > 0.0)
+		return temp;
+	else
+		return -temp;
+}
+
 void Vector3::Pow(double times)
 {
 	Elements[0] = std::pow(Elements[0], times);
 	Elements[1] = std::pow(Elements[1], times);
 	Elements[2] = std::pow(Elements[2], times);
+}
+
+bool Vector3::IsNearZero() const
+{
+	return (std::fabs(Elements[0]) < 1e-8) && (std::fabs(Elements[1]) < 1e-8) && (std::fabs(Elements[2]) < 1e-8);
+}
+
+Vector3 Vector3::Reflect(const Vector3& normal)
+{
+	return *this - 2 * this->Dot(normal) * normal;
 }
 
 std::ostream& operator<<(std::ostream& out, const Vector3& vector)

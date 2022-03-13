@@ -27,6 +27,10 @@ public:
 	{
 	}
 
+	Vector3(Vector3& other) : Elements{ other[0], other[1], other[2] }
+	{
+	}
+
 	Vector3(const Vector3& other) : Elements{ other[0], other[1], other[2] }
 	{
 	}
@@ -44,6 +48,7 @@ public:
 	Vector3 operator-() const;
 	Vector3& operator=(const Vector3& theOther);
 	Vector3& operator+=(const Vector3& theOther);
+	Vector3& operator*=(const Vector3& theOther);
 	Vector3& operator*=(double times);
 	Vector3& operator/=(double times);
 
@@ -52,12 +57,18 @@ public:
 
 	Vector3& Normalize();
 	Vector3 Normalized() const;
-
 	void Pow(double times);
 
+	bool IsNearZero() const;
+	Vector3 Reflect(const Vector3& normal);
 public:
 	static Vector3 Random(double min = 0.0, double max = 1.0);
+	// Used for a lazy hack of LambertianMaterial Reflection.
 	static Vector3 RandomPointInUnitSphere();
+	// Used for True LambertianMaterial Reflection.
+	static Vector3 RandomPointOnUnitSphere();
+	// Used for Hemisphere Diffuse Reflection.
+	static Vector3 RandomPointInHemisphere(const Vector3& normal);
 };
 
 

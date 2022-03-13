@@ -30,7 +30,7 @@ bool Sphere::IsHit(const Ray& ray, double tMin, double tMax, HitRecord& record) 
 
 	Vector3 resultPoint = ray.At(resultT);
 	Vector3 resultOutwardNormal = (resultPoint - Center) / Radius;
-	record = { resultT, resultPoint };
+	record = { resultT, resultPoint, MainMaterial };
 	record.SetNormalAgainstRay(ray, resultOutwardNormal);
 	return true;
 }
