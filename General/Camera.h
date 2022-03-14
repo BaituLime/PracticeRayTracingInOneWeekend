@@ -15,7 +15,9 @@ private:
 	Vector3 HorizontalUnit;
 	Vector3 VerticalUnit;
 public:
-	explicit Camera(const Vector3& origin, double aspectRatio = 16.0 / 9.0, double viewportHeight = 2.0, double focalLength = 1.0);
+	Camera() = delete;
+	explicit Camera(Vector3 origin, Vector3 lookAt, Vector3 up, double verticalFieldOfView,
+			double aspectRatio = 16.0 / 9.0);
 
 	Ray GetRayByCoordinate(double u, double v) const;
 };

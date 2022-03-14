@@ -13,10 +13,11 @@ class MetalMaterial : public Material
 {
 private:
 	Color Albedo;
+	double Fuzziness;
 public:
 	MetalMaterial() = delete;
 
-	MetalMaterial(const Color& color) : Albedo(color)
+	MetalMaterial(const Color& color, double fuzziness) : Albedo(color), Fuzziness(fuzziness < 1 ? fuzziness : 1)
 	{
 	}
 

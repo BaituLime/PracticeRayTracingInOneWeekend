@@ -7,6 +7,7 @@
 #include "../General/Camera.h"
 #include "../General/LambertianMaterial.h"
 #include "../General/MetalMaterial.h"
+#include "../General/DielectricMaterial.h"
 
 int main()
 {
@@ -21,16 +22,16 @@ int main()
 	HitableList world;
 	auto materialGround = std::make_shared<LambertianMaterial>(Color(0.8, 0.8, 0.0));
 	auto materialCenter = std::make_shared<LambertianMaterial>(Color(0.7, 0.3, 0.3));
-	auto materialLeft = std::make_shared<MetalMaterial>(Color(0.8));
-	auto materialRight = std::make_shared<MetalMaterial>(Color(0.8, 0.6, 0.2));
+	auto materialLeft = std::make_shared<DielectricMaterial>(1.5);
+	auto materialRight = std::make_shared<MetalMaterial>(Color(0.8, 0.6, 0.2), .8);
 	world.Append(std::make_shared<Sphere>(Vector3(0.0, -100.5, -1.0), materialGround, 100.0));
 	world.Append(std::make_shared<Sphere>(Vector3{ 0.0, 0.0, -1.0 }, materialCenter, 0.5));
 	world.Append(std::make_shared<Sphere>(Vector3{ -1.0, 0.0, -1.0 }, materialLeft, 0.5));
+	world.Append(std::make_shared<Sphere>(Vector3{ -1.0, 0.0, -1.0 }, materialLeft, -0.5));
 	world.Append(std::make_shared<Sphere>(Vector3{ 1.0, 0.0, -1.0 }, materialRight, 0.5));
 
 	// Create the camera.
-	Vector3 Origin(0.0);
-	Camera mainCamera(Origin);
+	Camera mainCamera({ -2, 2, 1 }, { 0, 0, -1 }, { 0, 1, 0 }, 90, aspectRatio);
 
 	// Render.
 	std::cout << "P3\n" << imageWidth << " " << imageHeight << "\n255\n";

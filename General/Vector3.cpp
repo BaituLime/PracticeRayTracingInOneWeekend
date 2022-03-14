@@ -141,6 +141,14 @@ Vector3 Vector3::Reflect(const Vector3& normal)
 	return *this - 2 * this->Dot(normal) * normal;
 }
 
+Vector3 Vector3::Refract(const Vector3& normal, double refractionRate)
+{
+	double cosTheta = std::fmin((-*this).Dot(normal), 1.0);
+	Vector3 outPerpendicular = refractionRate * (*this + cosTheta * normal);
+	Vector3 outParallel = -std::sqrt(std::fabs(1.0 - outPerpendicular.LengthSquared())) * normal;
+	return outPerpendicular + outParallel;
+}
+
 std::ostream& operator<<(std::ostream& out, const Vector3& vector)
 {
 	return out << vector[0] << ' ' << vector[1] << ' ' << vector[2];

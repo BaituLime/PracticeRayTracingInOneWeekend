@@ -17,11 +17,13 @@ public:
 	Vector3 IntersectionPoint;
 	std::shared_ptr<Material> TheMaterial;
 	Vector3 Normal;
+	bool IsEnteringRayFrontOfFace;
 
 public:
 	void SetNormalAgainstRay(const Ray& ray, const Vector3& outwardNormal)
 	{
-		Normal = ray.GetDirection().Dot(outwardNormal) < 0 ? outwardNormal : -outwardNormal;
+		IsEnteringRayFrontOfFace = ray.GetDirection().Dot(outwardNormal) < 0;
+		Normal = IsEnteringRayFrontOfFace ? outwardNormal : -outwardNormal;
 	}
 };
 

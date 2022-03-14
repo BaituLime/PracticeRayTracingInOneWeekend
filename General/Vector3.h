@@ -61,6 +61,7 @@ public:
 
 	bool IsNearZero() const;
 	Vector3 Reflect(const Vector3& normal);
+	Vector3 Refract(const Vector3& normal, double refractionRate);
 public:
 	static Vector3 Random(double min = 0.0, double max = 1.0);
 	// Used for a lazy hack of LambertianMaterial Reflection.

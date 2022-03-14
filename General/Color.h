@@ -10,22 +10,32 @@
 class Color
 {
 private:
-	Vector3* Data = nullptr;
+	Vector3 Data;
 
 public:
-	Color();
-	explicit Color(double element);
-	explicit Color(double elements[3]);
-	explicit Color(Vector3 data);
-	Color(const Color& other);
-	Color(double x, double y, double z);
-	~Color();
+	Color() : Data(0.0)
+	{
+	}
+
+	explicit Color(double element) : Data(element)
+	{
+	}
+
+	explicit Color(double elements[3]) : Data(elements)
+	{
+	}
+
+	explicit Color(Vector3 data) : Data(data)
+	{
+	}
+
+	Color(double x, double y, double z) : Data(x, y, z)
+	{
+	}
 
 	Vector3& GetData();
-
 	Color& operator=(const Color& other);
-
-	friend std::ostream& operator<<(std::ostream& out, const Color& color);
+	friend std::ostream& operator<<(std::ostream& out, Color& color);
 };
 
 std::ostream& operator<<(std::ostream& out, const Color& color);
