@@ -13,7 +13,7 @@
 #include <mutex>
 
 
-void render(int imageWidth, double aspectRatio, unsigned int *pixels)
+void render(int imageWidth, double aspectRatio, unsigned int *pixels, int line)
 {
 	const int imageHeight = imageWidth / aspectRatio;
 	const int samplesPerPixel = 1;
@@ -43,25 +43,27 @@ void render(int imageWidth, double aspectRatio, unsigned int *pixels)
 		for (int i = 0; i < imageWidth; i++)
 		{
 			Color pixelColor;
-			for (int s = 0; s < samplesPerPixel; s++)
-			{
-				auto u = (static_cast<double>(i) + RabbitUtility::Random(-1, 1)) / (imageWidth - 1);
-				auto v = (static_cast<double>(j) + RabbitUtility::Random(-1, 1)) / (imageHeight - 1);
-				Ray ray = mainCamera.GetRayByCoordinate(u, v);
 
-				pixelColor.GetData() += ray.GetColor(world, maxReflectionTimes).GetData();
-			}
-			pixelColor.GetData() /= samplesPerPixel;
+            //render
+            for (int s = 0; s < samplesPerPixel; s++)
+            {
+                auto u = (static_cast<double>(i) + RabbitUtility::Random(-1, 1)) / (imageWidth - 1);
+                auto v = (static_cast<double>(j) + RabbitUtility::Random(-1, 1)) / (imageHeight - 1);
+                Ray ray = mainCamera.GetRayByCoordinate(u, v);
+
+                pixelColor.GetData() += ray.GetColor(world, maxReflectionTimes).GetData();
+            }
+            pixelColor.GetData() /= samplesPerPixel;
 
             pixels[i + (imageHeight - j - 1) * imageWidth] = RGB(
                 int(256.0 * RabbitUtility::Clamp(pixelColor.GetData()[0], 0.0, 0.999)),
                 int(256.0 * RabbitUtility::Clamp(pixelColor.GetData()[1], 0.0, 0.999)),
-                int(256.0 * RabbitUtility::Clamp(pixelColor.GetData()[2], 0.0, 0.999)),
-            );
-		}
+                int(256.0 * RabbitUtility::Clamp(pixelColor.GetData()[2], 0.0, 0.999)), );
+        }
 	}
-
 }
+
+
 int main(int argc, char **argv)
 {
     int imageWidth = 1368;
