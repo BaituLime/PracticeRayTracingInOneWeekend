@@ -70,6 +70,8 @@ public:
 	static Vector3 RandomPointOnUnitSphere();
 	// Used for Hemisphere Diffuse Reflection.
 	static Vector3 RandomPointInHemisphere(const Vector3& normal);
+
+	static Vector3 random_in_unit_disk();
 };
 
 

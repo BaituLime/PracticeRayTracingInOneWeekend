@@ -149,6 +149,17 @@ Vector3 Vector3::Refract(const Vector3& normal, double refractionRate)
 	return outPerpendicular + outParallel;
 }
 
+Vector3 Vector3::random_in_unit_disk()
+{
+	while (true)
+	{
+		Vector3 p = { RabbitUtility::Random(-1, 1), RabbitUtility::Random(-1, 1), 0 };
+		if (p.LengthSquared() >= 1)
+			continue;
+		return p;
+	}
+}
+
 std::ostream& operator<<(std::ostream& out, const Vector3& vector)
 {
 	return out << vector[0] << ' ' << vector[1] << ' ' << vector[2];

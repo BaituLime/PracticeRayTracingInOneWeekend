@@ -16,7 +16,7 @@ bool DielectricMaterial::Scatter(const Ray& in, const HitRecord& record, Color& 
 
 	bool cantRefract = refractionRatio * sinTheta > 1.0;
 	scattered = Ray(record.IntersectionPoint,
-			(cantRefract || Reflectance(cosTheta, refractionRatio)) ?
+			(cantRefract || Reflectance(cosTheta, refractionRatio) > RabbitUtility::Random()) ?
 			inDirection.Reflect(record.Normal) :
 			inDirection.Refract(record.Normal, refractionRatio));
 	return true;
